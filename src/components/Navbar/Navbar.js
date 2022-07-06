@@ -1,4 +1,5 @@
 import React from "react"
+import CartIcon from "../CartIcon/CartIcon";
 export default function Navbar () {
 
 
@@ -17,7 +18,7 @@ return (
                 <li>Productos</li>
                 <li>Contacto</li>
             </ul>
-
+            <CartIcon/>
      </header>
 
     );
