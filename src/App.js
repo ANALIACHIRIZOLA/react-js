@@ -1,19 +1,18 @@
-import React from "react"
-import Navbar from "./components/Navbar/Navbar";
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
-import ItemCount from "./components/ItemCount/ItemCount";
+import "bootstrap/dist/css/bootstrap.css"
+import "bootstrap/dist/js/bootstrap.bundle.min.js"
+import Navbar from './components/Navbar/Navbar';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import ItemCount from './components/ItemCount/ItemCount';
+import "./styles/styles.css";
 function App() {
+
   return (
-    <div className="App">
-      <Navbar/>
-      <ItemListContainer greeting={"mensaje de ok"}/>
-      <div>
-          <h2>
-            Este es mi ItemCount
-          </h2>
-          <ItemCount initial={1} maxValue={8} />
-        </div>
+    <div>
+      <Navbar className="header"/>
+      <ItemListContainer greeting={"mensaje de ok"}  />
+      <ItemCount/>
     </div>
+    
   );
 }
 

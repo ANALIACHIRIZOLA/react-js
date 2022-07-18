@@ -1,39 +1,36 @@
-import React from "react"
-export default function AddButton() {
-    const [count, setCount] = React.useState(1)
-    const stock = 20
-    const onAdd = () => {
-        if(count < stock){
-        setCount(count + 1)
-        }
-    }
-    const onDecrease = () => {
-        if(count > 1) {
-            setCount(count - 1)
-        }
-    }
-    const onSubmit =() => {
-        alert("se agrego correctamente al carrito")
-    }
-    const StockButton = ({handleOnClick, text}) => {
-        return <button className="stock-button" onClick={handleOnClick}>{text}</button>;
-        
-    };
+import React,{useState} from 'react'
 
-    const AddButton = ({handleOnSubmit}) => {   
-        return (
-            <button className="add-button" onClick={handleOnSubmit}>
-            Añadir al carrito
-        </button>
-        )
-    };
-    return (
-        <div className="add-button-container">
-            <StockButton text="-" handleOnClick={onDecrease}/>
-            <span className="add-button-count">{count}</span>
-            <StockButton text="+" handleOnClick={onAdd}/>
-            <AddButton handleOnSubmit={onSubmit}/>
-        </div>
-    );
+const ItemCount = ({stock}) => {
+    const[contador, setContador]=useState(0)
+
+    const sumar = () =>{
+        if(contador < stock){
+            setContador(contador + 1)
+        }
+    }
+
+    const restar = () => {
+        if(contador > 0){
+            setContador(contador - 1)
+        }
+    }
+    const [action, setAction]=React.useState("comprar")
+    const AddToCart = () => (
+        <button onClick={() => setAction("carrito")}>Comprar</button>
+    )
+    const GoToCart = () => (
+        <button>Ir al Carrito</button>
+    )
+    const Button = action === "comprar" ? AddToCart : GoToCart
+
+  return (
+    <div>
+        <button onClick={restar}>-</button>
+        <span>{contador}</span>
+        <button onClick={sumar}>+</button>
+        <Button></Button>
+    </div>
+  )
 }
-    
+
+export default ItemCount
